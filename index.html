@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Learning — Courses for Coaches &amp; Sports Physiotherapists</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1b2a3a;
+    --navy-soft: #25394d;
+    --teal: #3a8a8c;
+    --teal-soft: #e8f2f2;
+    --terracotta: #d9764a;
+    --terracotta-soft: #fbe8dd;
+    --cream: #f7f5f1;
+    --ink: #2a2f35;
+    --ink-mute: #6b7480;
+    --line: #e2e0da;
+    --white: #ffffff;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(27,42,58,0.06), 0 8px 24px rgba(27,42,58,0.08);
+    --shadow-lift: 0 4px 8px rgba(27,42,58,0.08), 0 16px 40px rgba(27,42,58,0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ================= NAV ================= */
+  .site-nav {
+    background: var(--navy);
+    padding: 0 24px;
+    position: relative;
+    z-index: 100;
+  }
+
+  .site-nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 16px;
+  }
+
+  .site-logo {
+    color: var(--white);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+    flex-shrink: 0;
+  }
+
+  .site-logo span { color: var(--terracotta); }
+
+  /* Desktop nav links */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-links > li { position: relative; }
+
+  .nav-links > li > a,
+  .nav-links > li > button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+
+  .nav-links > li > a:hover,
+  .nav-links > li > button:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
+  }
+
+  .nav-links .chevron {
+    font-size: 10px;
+    transition: transform 0.15s;
+  }
+
+  .nav-links li.open .chevron { transform: rotate(180deg); }
+
+  /* Dropdown */
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 260px;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lift);
+    padding: 8px;
+    z-index: 200;
+  }
+
+  .nav-links li.open .dropdown { display: block; }
+
+  .dropdown a {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 14px;
+    border-radius: 8px;
+    transition: background 0.12s;
+    color: var(--ink);
+  }
+
+  .dropdown a:hover { background: var(--cream); }
+
+  .dropdown a .drop-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+  }
+
+  .dropdown a .drop-sub {
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+
+  .dropdown .coming-soon {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 14px;
+    border-radius: 8px;
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  .dropdown .coming-soon .drop-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+  }
+
+  .dropdown .coming-soon .drop-sub {
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+
+  .dropdown-divider {
+    height: 1px;
+    background: var(--line);
+    margin: 6px 0;
+  }
+
+  /* Nav actions */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.12s, box-shadow 0.12s;
+    text-decoration: none;
+  }
+
+  .btn:hover { transform: translateY(-1px); }
+
+  .btn-primary {
+    background: var(--terracotta);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(217,118,74,0.35);
+  }
+
+  .btn-ghost {
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  .btn-ghost:hover { background: rgba(255,255,255,0.18); }
+
+  .btn-lg {
+    padding: 14px 28px;
+    font-size: 15.5px;
+  }
+
+  /* Mobile toggle */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 6px;
+  }
+
+  @media (max-width: 820px) {
+    .nav-toggle { display: block; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--navy-soft);
+      flex-direction: column;
+      align-items: stretch;
+      padding: 8px;
+      gap: 0;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links > li > a,
+    .nav-links > li > button { width: 100%; justify-content: space-between; }
+    .dropdown {
+      position: static;
+      box-shadow: none;
+      background: rgba(0,0,0,0.15);
+      border-radius: 8px;
+      margin: 4px 0;
+    }
+    .dropdown a:hover { background: rgba(255,255,255,0.08); }
+    .dropdown a .drop-title,
+    .dropdown .coming-soon .drop-title { color: var(--white); }
+    .dropdown a .drop-sub,
+    .dropdown .coming-soon .drop-sub { color: rgba(255,255,255,0.6); }
+    .nav-actions .btn-ghost { display: none; }
+  }
+
+  /* ================= HERO ================= */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a4a5e 40%, var(--teal) 100%);
+    padding: 80px 24px 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero::after {
+    content: '';
+    display: block;
+    height: 60px;
+    background: var(--cream);
+    clip-path: ellipse(55% 100% at 50% 100%);
+    margin-top: 60px;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero-text .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .hero-text h1 {
+    color: var(--white);
+    font-size: clamp(32px, 4.5vw, 52px);
+    line-height: 1.08;
+    margin-bottom: 18px;
+  }
+
+  .hero-text h1 span { color: var(--terracotta); }
+
+  .hero-text p {
+    color: rgba(255,255,255,0.72);
+    font-size: 16.5px;
+    line-height: 1.65;
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Image placeholder */
+  .hero-image {
+    aspect-ratio: 4 / 3;
+    border-radius: 20px 20px 0 0;
+    background: rgba(255,255,255,0.08);
+    border: 2px dashed rgba(255,255,255,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.4);
+    font-size: 13.5px;
+    font-weight: 500;
+    align-self: flex-end;
+  }
+
+  .hero-image svg { opacity: 0.4; }
+
+  @media (max-width: 760px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-image { display: none; }
+    .hero { padding: 60px 24px 0; }
+  }
+
+  /* ================= SECTION SHELL ================= */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 72px 24px;
+  }
+
+  .section-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(24px, 3vw, 34px);
+    margin-bottom: 12px;
+  }
+
+  .section-head p {
+    color: var(--ink-mute);
+    font-size: 15.5px;
+    line-height: 1.6;
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+
+  /* ================= COURSE CATEGORY CARDS ================= */
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .category-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .category-card .cat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+
+  .category-card.physio .cat-icon { background: var(--teal-soft); }
+  .category-card.coaches .cat-icon { background: var(--terracotta-soft); }
+
+  .category-card h3 { font-size: 19px; margin: 0; }
+
+  .category-card p {
+    color: var(--ink-mute);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+
+  .course-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+
+  .course-list li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: var(--cream);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--navy);
+    transition: background 0.12s;
+  }
+
+  .course-list li a:hover { background: var(--teal-soft); }
+
+  .course-list li a .arrow { color: var(--teal); font-size: 16px; }
+
+  .course-list li.coming {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: var(--cream);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-mute);
+    opacity: 0.6;
+  }
+
+  .course-list li.coming .badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--line);
+    color: var(--ink-mute);
+    padding: 3px 8px;
+    border-radius: 999px;
+  }
+
+  @media (max-width: 680px) {
+    .category-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ================= CTA STRIP ================= */
+  .cta-strip {
+    background: var(--navy);
+    padding: 56px 24px;
+    text-align: center;
+  }
+
+  .cta-strip h2 {
+    color: var(--white);
+    font-size: clamp(22px, 3vw, 30px);
+    margin-bottom: 12px;
+  }
+
+  .cta-strip p {
+    color: rgba(255,255,255,0.65);
+    font-size: 15px;
+    max-width: 460px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+  }
+
+  /* ================= FOOTER ================= */
+  .site-footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.45);
+    padding: 28px 24px;
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .site-footer a {
+    color: rgba(255,255,255,0.65);
+  }
+
+  .site-footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a class="site-logo" href="index.html">Core <span>Learning</span></a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">☰</button>
+
+    <ul class="nav-links" id="nav-links">
+
+      <li id="physio-li">
+        <button onclick="toggleDropdown('physio-li')">
+          Sports physiotherapy <span class="chevron">▾</span>
+        </button>
+        <div class="dropdown">
+          <a href="https://callan-sketch.github.io/core-learning/">
+            <span class="drop-title">Climbing injuries &amp; management</span>
+            <span class="drop-sub">Diagnosis, treatment and return-to-climb protocols</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <div class="coming-soon">
+            <span class="drop-title">More coming soon</span>
+            <span class="drop-sub">New courses in development</span>
+          </div>
+        </div>
+      </li>
+
+      <li id="coaches-li">
+        <button onclick="toggleDropdown('coaches-li')">
+          Sports coaches <span class="chevron">▾</span>
+        </button>
+        <div class="dropdown">
+          <a href="https://callan-sketch.github.io/core-learning/">
+            <span class="drop-title">Climbing Coaches Fundamentals</span>
+            <span class="drop-sub">A full certification covering exercise science, technique &amp; programming</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <div class="coming-soon">
+            <span class="drop-title">More coming soon</span>
+            <span class="drop-sub">New courses in development</span>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+
+    <div class="nav-actions">
+      <a class="btn btn-ghost" href="https://callan-sketch.github.io/core-learning/login.html">Log in</a>
+      <a class="btn btn-primary" href="https://callan-sketch.github.io/core-learning/login.html">Sign up</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow">Core Learning</p>
+      <h1>Education built for <span>those who coach</span></h1>
+      <p>Professional online courses for sports coaches and physiotherapists — evidence-based, practical, and built around the demands of real-world practice.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="https://callan-sketch.github.io/core-learning/login.html">Sign up / Log in</a>
+        <a class="btn btn-ghost btn-lg" href="#courses">Browse courses</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      Add your hero image here
+    </div>
+  </div>
+</header>
+
+<!-- ================= COURSES ================= -->
+<section class="section" id="courses">
+  <div class="section-head">
+    <p class="section-eyebrow">Courses</p>
+    <h2>Find the right course for you</h2>
+    <p>Browse by discipline — each course is built around the specific demands of that field, not adapted from a generic template.</p>
+  </div>
+
+  <div class="category-grid">
+
+    <div class="category-card physio">
+      <div class="cat-icon">🩺</div>
+      <h3>Sports physiotherapy</h3>
+      <p>Courses for physiotherapists working with athletes — covering injury assessment, sport-specific rehabilitation, and return-to-performance protocols.</p>
+      <ul class="course-list">
+        <li>
+          <a href="https://callan-sketch.github.io/core-learning/">
+            Climbing injuries &amp; management
+            <span class="arrow">→</span>
+          </a>
+        </li>
+        <li class="coming">
+          More courses coming soon
+          <span class="badge">Soon</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="category-card coaches">
+      <div class="cat-icon">🧗</div>
+      <h3>Sports coaches</h3>
+      <p>Courses for coaches who want a genuine understanding of exercise science, movement, and performance — not just a certificate to hang on the wall.</p>
+      <ul class="course-list">
+        <li>
+          <a href="https://callan-sketch.github.io/core-learning/">
+            Climbing Coaches Fundamentals
+            <span class="arrow">→</span>
+          </a>
+        </li>
+        <li class="coming">
+          More courses coming soon
+          <span class="badge">Soon</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<div class="cta-strip">
+  <h2>Ready to get started?</h2>
+  <p>Create your account and enrol in your first course today.</p>
+  <a class="btn btn-primary btn-lg" href="https://callan-sketch.github.io/core-learning/login.html">Sign up / Log in</a>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <p>Core Learning — professional education for coaches and physiotherapists. <a href="mailto:callan@wam.co.za">callan@wam.co.za</a></p>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  document.getElementById('nav-toggle').addEventListener('click', function() {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+
+  // Dropdown toggle — closes others when one opens
+  function toggleDropdown(id) {
+    const all = document.querySelectorAll('.nav-links > li');
+    all.forEach(li => {
+      if (li.id !== id) li.classList.remove('open');
+    });
+    document.getElementById(id).classList.toggle('open');
+  }
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-links')) {
+      document.querySelectorAll('.nav-links > li').forEach(li => li.classList.remove('open'));
+    }
+  });
+</script>
+
+</body>
+</html>
