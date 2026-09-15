@@ -72,7 +72,6 @@
 
   .site-logo span { color: var(--terracotta); }
 
-  /* Desktop nav links */
   .nav-links {
     display: flex;
     align-items: center;
@@ -115,13 +114,12 @@
 
   .nav-links li.open .chevron { transform: rotate(180deg); }
 
-  /* Dropdown */
   .dropdown {
     display: none;
     position: absolute;
     top: calc(100% + 6px);
     left: 0;
-    min-width: 260px;
+    min-width: 280px;
     background: var(--white);
     border-radius: var(--radius);
     box-shadow: var(--shadow-lift);
@@ -181,52 +179,6 @@
     margin: 6px 0;
   }
 
-  /* Nav actions */
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px 20px;
-    border-radius: 999px;
-    font-size: 14px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    transition: transform 0.12s, box-shadow 0.12s;
-    text-decoration: none;
-  }
-
-  .btn:hover { transform: translateY(-1px); }
-
-  .btn-primary {
-    background: var(--terracotta);
-    color: var(--white);
-    box-shadow: 0 4px 14px rgba(217,118,74,0.35);
-  }
-
-  .btn-ghost {
-    background: rgba(255,255,255,0.1);
-    color: var(--white);
-    border: 1px solid rgba(255,255,255,0.3);
-  }
-
-  .btn-ghost:hover { background: rgba(255,255,255,0.18); }
-
-  .btn-lg {
-    padding: 14px 28px;
-    font-size: 15.5px;
-  }
-
-  /* Mobile toggle */
   .nav-toggle {
     display: none;
     background: none;
@@ -266,90 +218,22 @@
     .dropdown .coming-soon .drop-title { color: var(--white); }
     .dropdown a .drop-sub,
     .dropdown .coming-soon .drop-sub { color: rgba(255,255,255,0.6); }
-    .nav-actions .btn-ghost { display: none; }
   }
 
-  /* ================= HERO ================= */
-  .hero {
-    background: linear-gradient(135deg, var(--navy) 0%, #2a4a5e 40%, var(--teal) 100%);
-    padding: 80px 24px 0;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .hero::after {
-    content: '';
+  /* ================= HERO BANNER ================= */
+  .hero-banner {
+    width: 100%;
     display: block;
-    height: 60px;
-    background: var(--cream);
-    clip-path: ellipse(55% 100% at 50% 100%);
-    margin-top: 60px;
+    line-height: 0;
   }
 
-  .hero-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-  }
-
-  .hero-text .eyebrow {
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--terracotta);
-    font-weight: 700;
-    margin-bottom: 14px;
-  }
-
-  .hero-text h1 {
-    color: var(--white);
-    font-size: clamp(32px, 4.5vw, 52px);
-    line-height: 1.08;
-    margin-bottom: 18px;
-  }
-
-  .hero-text h1 span { color: var(--terracotta); }
-
-  .hero-text p {
-    color: rgba(255,255,255,0.72);
-    font-size: 16.5px;
-    line-height: 1.65;
-    max-width: 480px;
-    margin-bottom: 32px;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  /* Image placeholder */
-  .hero-image {
-    aspect-ratio: 4 / 3;
-    border-radius: 20px 20px 0 0;
-    background: rgba(255,255,255,0.08);
-    border: 2px dashed rgba(255,255,255,0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: rgba(255,255,255,0.4);
-    font-size: 13.5px;
-    font-weight: 500;
-    align-self: flex-end;
-  }
-
-  .hero-image svg { opacity: 0.4; }
-
-  @media (max-width: 760px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-image { display: none; }
-    .hero { padding: 60px 24px 0; }
+  .hero-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 480px;
+    object-fit: cover;
+    object-position: center;
   }
 
   /* ================= SECTION SHELL ================= */
@@ -477,31 +361,9 @@
     .category-grid { grid-template-columns: 1fr; }
   }
 
-  /* ================= CTA STRIP ================= */
-  .cta-strip {
-    background: var(--navy);
-    padding: 56px 24px;
-    text-align: center;
-  }
-
-  .cta-strip h2 {
-    color: var(--white);
-    font-size: clamp(22px, 3vw, 30px);
-    margin-bottom: 12px;
-  }
-
-  .cta-strip p {
-    color: rgba(255,255,255,0.65);
-    font-size: 15px;
-    max-width: 460px;
-    margin: 0 auto 28px;
-    line-height: 1.6;
-  }
-
   /* ================= FOOTER ================= */
   .site-footer {
     background: var(--navy);
-    border-top: 1px solid rgba(255,255,255,0.07);
     color: rgba(255,255,255,0.45);
     padding: 28px 24px;
     text-align: center;
@@ -537,8 +399,16 @@
           </a>
           <div class="dropdown-divider"></div>
           <div class="coming-soon">
-            <span class="drop-title">More coming soon</span>
-            <span class="drop-sub">New courses in development</span>
+            <span class="drop-title">The Knee</span>
+            <span class="drop-sub">Coming soon</span>
+          </div>
+          <div class="coming-soon">
+            <span class="drop-title">Ethics in sports physiotherapy</span>
+            <span class="drop-sub">Coming soon</span>
+          </div>
+          <div class="coming-soon">
+            <span class="drop-title">The Shoulder</span>
+            <span class="drop-sub">Coming soon</span>
           </div>
         </div>
       </li>
@@ -554,40 +424,52 @@
           </a>
           <div class="dropdown-divider"></div>
           <div class="coming-soon">
-            <span class="drop-title">More coming soon</span>
-            <span class="drop-sub">New courses in development</span>
+            <span class="drop-title">Climbing intermediate</span>
+            <span class="drop-sub">Coming soon</span>
+          </div>
+          <div class="coming-soon">
+            <span class="drop-title">Climbing advanced / high performance</span>
+            <span class="drop-sub">Coming soon</span>
+          </div>
+          <div class="coming-soon">
+            <span class="drop-title">Surfing coaches</span>
+            <span class="drop-sub">Coming soon</span>
+          </div>
+        </div>
+      </li>
+
+      <li id="short-li">
+        <button onclick="toggleDropdown('short-li')">
+          5min education <span class="chevron">▾</span>
+        </button>
+        <div class="dropdown">
+          <div class="coming-soon">
+            <span class="drop-title">Nutrition for climbers</span>
+            <span class="drop-sub">Coming soon</span>
+          </div>
+          <div class="coming-soon">
+            <span class="drop-title">Mental game for climbers</span>
+            <span class="drop-sub">Coming soon</span>
+          </div>
+          <div class="coming-soon">
+            <span class="drop-title">Plyometric training</span>
+            <span class="drop-sub">Coming soon</span>
+          </div>
+          <div class="coming-soon">
+            <span class="drop-title">Sleep</span>
+            <span class="drop-sub">Coming soon</span>
           </div>
         </div>
       </li>
 
     </ul>
-
-    <div class="nav-actions">
-      <a class="btn btn-ghost" href="https://callan-sketch.github.io/core-learning/login.html">Log in</a>
-      <a class="btn btn-primary" href="https://callan-sketch.github.io/core-learning/login.html">Sign up</a>
-    </div>
   </div>
 </nav>
 
-<!-- ================= HERO ================= -->
-<header class="hero">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <p class="eyebrow">Core Learning</p>
-      <h1>Education built for <span>those who coach</span></h1>
-      <p>Professional online courses for sports coaches and physiotherapists — evidence-based, practical, and built around the demands of real-world practice.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary btn-lg" href="https://callan-sketch.github.io/core-learning/login.html">Sign up / Log in</a>
-        <a class="btn btn-ghost btn-lg" href="#courses">Browse courses</a>
-      </div>
-    </div>
-
-    <div class="hero-image">
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-      Add your hero image here
-    </div>
-  </div>
-</header>
+<!-- ================= HERO BANNER ================= -->
+<div class="hero-banner">
+  <img src="images/hero-banner-hub.jpg" alt="Core Learning — Move, Learn, Perform">
+</div>
 
 <!-- ================= COURSES ================= -->
 <section class="section" id="courses">
@@ -602,7 +484,7 @@
     <div class="category-card physio">
       <div class="cat-icon">🩺</div>
       <h3>Sports physiotherapy</h3>
-      <p>Courses for physiotherapists working with athletes — covering injury assessment, sport-specific rehabilitation, and return-to-performance protocols.</p>
+      <p>For physiotherapists working with athletes — sport-specific injury management, rehabilitation, and return-to-performance protocols.</p>
       <ul class="course-list">
         <li>
           <a href="https://callan-sketch.github.io/core-learning/">
@@ -610,17 +492,16 @@
             <span class="arrow">→</span>
           </a>
         </li>
-        <li class="coming">
-          More courses coming soon
-          <span class="badge">Soon</span>
-        </li>
+        <li class="coming">The Knee <span class="badge">Soon</span></li>
+        <li class="coming">Ethics in sports physiotherapy <span class="badge">Soon</span></li>
+        <li class="coming">The Shoulder <span class="badge">Soon</span></li>
       </ul>
     </div>
 
     <div class="category-card coaches">
       <div class="cat-icon">🧗</div>
       <h3>Sports coaches</h3>
-      <p>Courses for coaches who want a genuine understanding of exercise science, movement, and performance — not just a certificate to hang on the wall.</p>
+      <p>For coaches who want a genuine understanding of exercise science, movement, and performance — not just a certificate to hang on the wall.</p>
       <ul class="course-list">
         <li>
           <a href="https://callan-sketch.github.io/core-learning/">
@@ -628,22 +509,26 @@
             <span class="arrow">→</span>
           </a>
         </li>
-        <li class="coming">
-          More courses coming soon
-          <span class="badge">Soon</span>
-        </li>
+        <li class="coming">Climbing intermediate <span class="badge">Soon</span></li>
+        <li class="coming">Climbing advanced / high performance <span class="badge">Soon</span></li>
+        <li class="coming">Surfing coaches <span class="badge">Soon</span></li>
+      </ul>
+    </div>
+
+    <div class="category-card" style="border-top: 3px solid var(--terracotta); grid-column: 1 / -1;">
+      <div class="cat-icon" style="background: var(--terracotta-soft);">⚡</div>
+      <h3>5min short education</h3>
+      <p>Bite-sized standalone topics for coaches and physios — each one covers a single concept in depth, designed to fit into a busy schedule.</p>
+      <ul class="course-list" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+        <li class="coming">Nutrition for climbers <span class="badge">Soon</span></li>
+        <li class="coming">Mental game for climbers <span class="badge">Soon</span></li>
+        <li class="coming">Plyometric training <span class="badge">Soon</span></li>
+        <li class="coming">Sleep <span class="badge">Soon</span></li>
       </ul>
     </div>
 
   </div>
 </section>
-
-<!-- ================= CTA ================= -->
-<div class="cta-strip">
-  <h2>Ready to get started?</h2>
-  <p>Create your account and enrol in your first course today.</p>
-  <a class="btn btn-primary btn-lg" href="https://callan-sketch.github.io/core-learning/login.html">Sign up / Log in</a>
-</div>
 
 <!-- ================= FOOTER ================= -->
 <footer class="site-footer">
@@ -651,12 +536,10 @@
 </footer>
 
 <script>
-  // Mobile nav toggle
   document.getElementById('nav-toggle').addEventListener('click', function() {
     document.getElementById('nav-links').classList.toggle('open');
   });
 
-  // Dropdown toggle — closes others when one opens
   function toggleDropdown(id) {
     const all = document.querySelectorAll('.nav-links > li');
     all.forEach(li => {
@@ -665,7 +548,6 @@
     document.getElementById(id).classList.toggle('open');
   }
 
-  // Close dropdowns when clicking outside
   document.addEventListener('click', function(e) {
     if (!e.target.closest('.nav-links')) {
       document.querySelectorAll('.nav-links > li').forEach(li => li.classList.remove('open'));
