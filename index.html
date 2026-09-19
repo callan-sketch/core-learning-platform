@@ -119,7 +119,7 @@
     position: absolute;
     top: calc(100% + 6px);
     left: 0;
-    min-width: 280px;
+    min-width: 260px;
     background: var(--white);
     border-radius: var(--radius);
     box-shadow: var(--shadow-lift);
@@ -220,23 +220,83 @@
     .dropdown .coming-soon .drop-sub { color: rgba(255,255,255,0.6); }
   }
 
-  /* ================= HERO BANNER ================= */
-  .hero-banner {
+  /* ================= HERO ================= */
+  .hero {
+    position: relative;
     width: 100%;
-    display: block;
     line-height: 0;
+    overflow: hidden;
   }
 
-  .hero-banner img {
+  .hero img {
     width: 100%;
     height: auto;
     display: block;
-    max-height: 480px;
+    max-height: 500px;
     object-fit: cover;
     object-position: center;
   }
 
-  /* ================= SECTION SHELL ================= */
+  /* Subtle dark gradient so text is legible */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(27,42,58,0.55) 0%,
+      rgba(27,42,58,0.15) 40%,
+      rgba(27,42,58,0.0) 65%,
+      rgba(27,42,58,0.0) 100%
+    );
+    display: flex;
+    align-items: center;
+    padding: 0 48px;
+  }
+
+  .hero-text {
+    max-width: 420px;
+  }
+
+  .hero-text .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+
+  .hero-text h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(26px, 3.5vw, 42px);
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+  }
+
+  .hero-text p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.82);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  }
+
+  @media (max-width: 600px) {
+    .hero-overlay {
+      background: rgba(27,42,58,0.45);
+      padding: 0 24px;
+      align-items: flex-end;
+      padding-bottom: 28px;
+    }
+    .hero-text h1 { font-size: 24px; }
+    .hero-text p { font-size: 13.5px; }
+  }
+
+  /* ================= SECTION ================= */
   .section {
     max-width: 1100px;
     margin: 0 auto;
@@ -265,7 +325,7 @@
     margin-bottom: 40px;
   }
 
-  /* ================= COURSE CATEGORY CARDS ================= */
+  /* ================= COURSE CARDS ================= */
   .category-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -329,7 +389,6 @@
   }
 
   .course-list li a:hover { background: var(--teal-soft); }
-
   .course-list li a .arrow { color: var(--teal); font-size: 16px; }
 
   .course-list li.coming {
@@ -355,6 +414,7 @@
     color: var(--ink-mute);
     padding: 3px 8px;
     border-radius: 999px;
+    flex-shrink: 0;
   }
 
   @media (max-width: 680px) {
@@ -370,10 +430,7 @@
     font-size: 13px;
   }
 
-  .site-footer a {
-    color: rgba(255,255,255,0.65);
-  }
-
+  .site-footer a { color: rgba(255,255,255,0.65); }
   .site-footer a:hover { text-decoration: underline; }
 </style>
 </head>
@@ -393,22 +450,14 @@
           Sports physiotherapy <span class="chevron">▾</span>
         </button>
         <div class="dropdown">
-          <a href="https://callan-sketch.github.io/core-learning/">
-            <span class="drop-title">Climbing injuries &amp; management</span>
-            <span class="drop-sub">Diagnosis, treatment and return-to-climb protocols</span>
+          <a href="https://corelearning.co.za">
+            <span class="drop-title">Climbing injury prevention &amp; management</span>
+            <span class="drop-sub">For physiotherapists working with climbers</span>
           </a>
           <div class="dropdown-divider"></div>
           <div class="coming-soon">
-            <span class="drop-title">The Knee</span>
-            <span class="drop-sub">Coming soon</span>
-          </div>
-          <div class="coming-soon">
-            <span class="drop-title">Ethics in sports physiotherapy</span>
-            <span class="drop-sub">Coming soon</span>
-          </div>
-          <div class="coming-soon">
-            <span class="drop-title">The Shoulder</span>
-            <span class="drop-sub">Coming soon</span>
+            <span class="drop-title">More courses coming soon</span>
+            <span class="drop-sub">In development</span>
           </div>
         </div>
       </li>
@@ -418,46 +467,14 @@
           Sports coaches <span class="chevron">▾</span>
         </button>
         <div class="dropdown">
-          <a href="https://callan-sketch.github.io/core-learning/">
-            <span class="drop-title">Climbing Coaches Fundamentals</span>
-            <span class="drop-sub">A full certification covering exercise science, technique &amp; programming</span>
+          <a href="https://corelearning.co.za">
+            <span class="drop-title">Climbing coaches fundamentals</span>
+            <span class="drop-sub">Certification course for climbing coaches</span>
           </a>
           <div class="dropdown-divider"></div>
           <div class="coming-soon">
-            <span class="drop-title">Climbing intermediate</span>
-            <span class="drop-sub">Coming soon</span>
-          </div>
-          <div class="coming-soon">
-            <span class="drop-title">Climbing advanced / high performance</span>
-            <span class="drop-sub">Coming soon</span>
-          </div>
-          <div class="coming-soon">
-            <span class="drop-title">Surfing coaches</span>
-            <span class="drop-sub">Coming soon</span>
-          </div>
-        </div>
-      </li>
-
-      <li id="short-li">
-        <button onclick="toggleDropdown('short-li')">
-          5min education <span class="chevron">▾</span>
-        </button>
-        <div class="dropdown">
-          <div class="coming-soon">
-            <span class="drop-title">Nutrition for climbers</span>
-            <span class="drop-sub">Coming soon</span>
-          </div>
-          <div class="coming-soon">
-            <span class="drop-title">Mental game for climbers</span>
-            <span class="drop-sub">Coming soon</span>
-          </div>
-          <div class="coming-soon">
-            <span class="drop-title">Plyometric training</span>
-            <span class="drop-sub">Coming soon</span>
-          </div>
-          <div class="coming-soon">
-            <span class="drop-title">Sleep</span>
-            <span class="drop-sub">Coming soon</span>
+            <span class="drop-title">More courses coming soon</span>
+            <span class="drop-sub">In development</span>
           </div>
         </div>
       </li>
@@ -466,9 +483,16 @@
   </div>
 </nav>
 
-<!-- ================= HERO BANNER ================= -->
-<div class="hero-banner">
-  <img src="images/hero-banner-hub.jpg" alt="Core Learning — Move, Learn, Perform">
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <img src="images/hero-banner-hub-v2.jpg" alt="Core Learning — Sport, coaching and physiotherapy education">
+  <div class="hero-overlay">
+    <div class="hero-text">
+      <p class="eyebrow">Core Learning</p>
+      <h1>Education that moves with you</h1>
+      <p>Professional courses for sports coaches and physiotherapists — built around real practice, not textbook theory.</p>
+    </div>
+  </div>
 </div>
 
 <!-- ================= COURSES ================= -->
@@ -476,7 +500,7 @@
   <div class="section-head">
     <p class="section-eyebrow">Courses</p>
     <h2>Find the right course for you</h2>
-    <p>Browse by discipline — each course is built around the specific demands of that field, not adapted from a generic template.</p>
+    <p>Two disciplines, one standard — each course is built around the specific demands of that field.</p>
   </div>
 
   <div class="category-grid">
@@ -484,17 +508,15 @@
     <div class="category-card physio">
       <div class="cat-icon">🩺</div>
       <h3>Sports physiotherapy</h3>
-      <p>For physiotherapists working with athletes — sport-specific injury management, rehabilitation, and return-to-performance protocols.</p>
+      <p>For physiotherapists working with active and athletic populations — sport-specific injury management, rehabilitation, and return-to-performance.</p>
       <ul class="course-list">
         <li>
-          <a href="https://callan-sketch.github.io/core-learning/">
-            Climbing injuries &amp; management
+          <a href="https://corelearning.co.za">
+            Climbing injury prevention &amp; management
             <span class="arrow">→</span>
           </a>
         </li>
-        <li class="coming">The Knee <span class="badge">Soon</span></li>
-        <li class="coming">Ethics in sports physiotherapy <span class="badge">Soon</span></li>
-        <li class="coming">The Shoulder <span class="badge">Soon</span></li>
+        <li class="coming">More coming soon <span class="badge">Soon</span></li>
       </ul>
     </div>
 
@@ -504,26 +526,12 @@
       <p>For coaches who want a genuine understanding of exercise science, movement, and performance — not just a certificate to hang on the wall.</p>
       <ul class="course-list">
         <li>
-          <a href="https://callan-sketch.github.io/core-learning/">
-            Climbing Coaches Fundamentals
+          <a href="https://corelearning.co.za">
+            Climbing coaches fundamentals
             <span class="arrow">→</span>
           </a>
         </li>
-        <li class="coming">Climbing intermediate <span class="badge">Soon</span></li>
-        <li class="coming">Climbing advanced / high performance <span class="badge">Soon</span></li>
-        <li class="coming">Surfing coaches <span class="badge">Soon</span></li>
-      </ul>
-    </div>
-
-    <div class="category-card" style="border-top: 3px solid var(--terracotta); grid-column: 1 / -1;">
-      <div class="cat-icon" style="background: var(--terracotta-soft);">⚡</div>
-      <h3>5min short education</h3>
-      <p>Bite-sized standalone topics for coaches and physios — each one covers a single concept in depth, designed to fit into a busy schedule.</p>
-      <ul class="course-list" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-        <li class="coming">Nutrition for climbers <span class="badge">Soon</span></li>
-        <li class="coming">Mental game for climbers <span class="badge">Soon</span></li>
-        <li class="coming">Plyometric training <span class="badge">Soon</span></li>
-        <li class="coming">Sleep <span class="badge">Soon</span></li>
+        <li class="coming">More coming soon <span class="badge">Soon</span></li>
       </ul>
     </div>
 
@@ -542,9 +550,7 @@
 
   function toggleDropdown(id) {
     const all = document.querySelectorAll('.nav-links > li');
-    all.forEach(li => {
-      if (li.id !== id) li.classList.remove('open');
-    });
+    all.forEach(li => { if (li.id !== id) li.classList.remove('open'); });
     document.getElementById(id).classList.toggle('open');
   }
 
