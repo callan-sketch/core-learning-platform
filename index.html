@@ -233,8 +233,16 @@
     height: auto;
     display: block;
     max-height: 500px;
+    min-height: 280px;
     object-fit: cover;
     object-position: center;
+  }
+
+  @media (max-width: 600px) {
+    .hero img {
+      min-height: 380px;
+      object-position: 45% center;
+    }
   }
 
   /* Subtle dark gradient so text is legible */
