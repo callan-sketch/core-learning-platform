@@ -243,10 +243,10 @@
     inset: 0;
     background: linear-gradient(
       to right,
-      rgba(27,42,58,0.55) 0%,
-      rgba(27,42,58,0.15) 40%,
-      rgba(27,42,58,0.0) 65%,
-      rgba(27,42,58,0.0) 100%
+      rgba(27,42,58,0.72) 0%,
+      rgba(27,42,58,0.35) 45%,
+      rgba(27,42,58,0.15) 70%,
+      rgba(27,42,58,0.08) 100%
     );
     display: flex;
     align-items: center;
@@ -286,7 +286,7 @@
   @media (max-width: 600px) {
     .hero img { min-height: 380px; object-position: 45% center; }
     .hero-overlay {
-      background: rgba(27,42,58,0.45);
+      background: rgba(27,42,58,0.58);
       padding: 0 24px;
       align-items: flex-end;
       padding-bottom: 28px;
@@ -558,10 +558,10 @@
             <span class="drop-sub">For physiotherapists working with climbers</span>
           </a>
           <div class="dropdown-divider"></div>
-          <div class="coming-soon">
-            <span class="drop-title">More courses coming soon</span>
-            <span class="drop-sub">In development</span>
-          </div>
+          <a href="https://gait.corelearning.co.za/index.html">
+            <span class="drop-title">Running gait analysis</span>
+            <span class="drop-sub">For physiotherapists treating running injuries</span>
+          </a>
         </div>
       </li>
 
@@ -602,7 +602,7 @@
 <section class="section" id="courses">
   <div class="section-intro">
     <h2>Available courses</h2>
-    <p>Two specialised professional courses, available now.</p>
+    <p>Three specialised professional courses, available now.</p>
   </div>
 
   <div class="course-grid">
@@ -665,12 +665,11 @@
       </div>
     </div>
 
-    <!-- RUNNING GAIT COURSE — COMING SOON (no links) -->
-    <div class="course-card physio coming-soon" aria-label="Coming soon">
+    <!-- RUNNING GAIT COURSE -->
+    <div class="course-card physio">
       <div class="course-image">
         <img src="https://raw.githubusercontent.com/callan-sketch/running_gait/main/Assets/Images/hero.png" alt="Running Gait Analysis for Injury Prevention and Treatment">
         <span class="course-tag">Sports physiotherapy</span>
-        <div class="coming-soon-band">COMING SOON</div>
       </div>
       <div class="course-body">
         <h3>Running Gait Analysis for Injury Prevention &amp; Treatment</h3>
@@ -685,7 +684,9 @@
             Self-paced
           </div>
         </div>
-        <span class="course-cta">Coming soon</span>
+        <a href="https://gait.corelearning.co.za/index.html" class="course-cta">
+          View course →
+        </a>
       </div>
     </div>
 
