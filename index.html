@@ -501,27 +501,142 @@
   }
   .course-card.coming-soon .course-cta:hover { transform: none; }
 
-  /* ================= MORE COMING — quiet line ================= */
-  .more-coming {
-    text-align: center;
-    padding: 0 24px 72px;
-    color: var(--ink-mute);
-    font-size: 13.5px;
+  /* ================= IN DEVELOPMENT SECTION ================= */
+  .dev-section {
+    padding: 0 24px 80px;
+    max-width: 1140px;
+    margin: 0 auto;
   }
 
-  .more-coming span {
-    display: inline-flex;
+  .dev-section-header {
+    display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 16px;
+    margin-bottom: 36px;
   }
 
-  .more-coming span::before,
-  .more-coming span::after {
+  .dev-section-header h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .dev-section-header::after {
     content: '';
-    display: inline-block;
-    width: 32px;
+    flex: 1;
     height: 1px;
     background: var(--line);
+  }
+
+  .dev-category {
+    margin-bottom: 32px;
+  }
+
+  .dev-category-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 14px;
+  }
+
+  .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .preview-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: var(--navy-soft);
+  }
+
+  .preview-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  }
+
+  .preview-card.coaching .preview-bg {
+    background: linear-gradient(135deg, #1b2a3a 0%, #2c3e2a 100%);
+  }
+
+  .preview-card.physio .preview-bg {
+    background: linear-gradient(135deg, #1b2a3a 0%, #1f3038 100%);
+  }
+
+  .preview-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,18,26,0.88) 0%, rgba(10,18,26,0.3) 55%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 14px 16px;
+  }
+
+  .preview-tag {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-bottom: 7px;
+    width: fit-content;
+  }
+
+  .preview-card.coaching .preview-tag {
+    background: rgba(217, 118, 74, 0.25);
+    color: #f0a07a;
+    border: 1px solid rgba(217, 118, 74, 0.35);
+  }
+
+  .preview-card.physio .preview-tag {
+    background: rgba(58, 138, 140, 0.25);
+    color: #6bbcbe;
+    border: 1px solid rgba(58, 138, 140, 0.35);
+  }
+
+  .preview-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  .preview-dev-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 3px 7px;
+    border-radius: 3px;
+  }
+
+  @media (max-width: 720px) {
+    .preview-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .preview-title { font-size: 12.5px; }
+  }
+
+  @media (max-width: 480px) {
+    .preview-grid { grid-template-columns: 1fr; }
   }
 
   /* ================= FOOTER ================= */
@@ -702,9 +817,74 @@
   </div>
 </section>
 
-<!-- ================= MORE COMING — quiet line ================= -->
-<div class="more-coming">
-  <span>More courses in development</span>
+<!-- ================= IN DEVELOPMENT ================= -->
+<div class="dev-section">
+
+  <div class="dev-section-header">
+    <h2>More courses in development</h2>
+  </div>
+
+  <!-- COACHING -->
+  <div class="dev-category">
+    <p class="dev-category-label">Coaching courses</p>
+    <div class="preview-grid">
+
+      <div class="preview-card coaching">
+        <div class="preview-bg"></div>
+        <div class="preview-overlay">
+          <span class="preview-tag">Sports coaching</span>
+          <p class="preview-title">Climbing Coaches Intermediate Course</p>
+        </div>
+        <span class="preview-dev-badge">In development</span>
+      </div>
+
+      <div class="preview-card coaching">
+        <div class="preview-bg"></div>
+        <div class="preview-overlay">
+          <span class="preview-tag">Sports coaching</span>
+          <p class="preview-title">Climbing Coaches Advanced Course</p>
+        </div>
+        <span class="preview-dev-badge">In development</span>
+      </div>
+
+      <div class="preview-card coaching">
+        <div class="preview-bg"></div>
+        <div class="preview-overlay">
+          <span class="preview-tag">Sports coaching</span>
+          <p class="preview-title">Surfing Coaches Course</p>
+        </div>
+        <span class="preview-dev-badge">In development</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PHYSIO -->
+  <div class="dev-category">
+    <p class="dev-category-label">Sports physiotherapy</p>
+    <div class="preview-grid">
+
+      <div class="preview-card physio">
+        <div class="preview-bg"></div>
+        <div class="preview-overlay">
+          <span class="preview-tag">Sports physiotherapy</span>
+          <p class="preview-title">Surfing Injuries &amp; Treatment</p>
+        </div>
+        <span class="preview-dev-badge">In development</span>
+      </div>
+
+      <div class="preview-card physio">
+        <div class="preview-bg"></div>
+        <div class="preview-overlay">
+          <span class="preview-tag">Sports physiotherapy</span>
+          <p class="preview-title">AI in Sports Physio (Ethics)</p>
+        </div>
+        <span class="preview-dev-badge">In development</span>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 <!-- ================= FOOTER ================= -->
